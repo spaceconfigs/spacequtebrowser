@@ -4,7 +4,7 @@
 #   qute://help/settings.html
 
 # Uncomment this to still load settings configured via autoconfig.yml
-# config.load_autoconfig(False)
+config.load_autoconfig(False)
 
 c.colors.webpage.darkmode.enabled = True
 # c.colors.webpage.darkmode.grayscale.images = False
@@ -40,6 +40,7 @@ c.url.searchengines = {
 
 # Unbinds
 config.unbind('xO')
+config.unbind('f')
 config.unbind('F')
 config.unbind('d')
 config.unbind('<Ctrl+w>')
@@ -65,12 +66,12 @@ config.bind('<Ctrl+->', 'zoom-out')
 config.bind('<Ctrl+0>', 'zoom')
 
 # Moviments
-config.bind('<Ctrl+d>', 'scroll-px 0 50')
+config.bind('<Ctrl+d>', 'scroll-px 0 300')
 config.bind('<Ctrl+j>', 'completion-item-focus next', mode='command')
 config.bind('<Ctrl+k>', 'completion-item-focus prev', mode='command')
 config.bind('<Ctrl+i>', 'forward')
 config.bind('<Ctrl+o>', 'back')
-config.bind('<Ctrl-u>', 'scroll-px 0 -50')
+config.bind('<Ctrl-u>', 'scroll-px 0 -300')
 
 config.bind('<Shift+k>', 'tab-prev')
 config.bind('<Shift+j>', 'tab-next')
