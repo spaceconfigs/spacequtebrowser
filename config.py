@@ -7,6 +7,7 @@
 config.load_autoconfig(False)
 
 c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.policy.images = 'smart'
 # c.colors.webpage.darkmode.grayscale.images = False
 
 # config.source('themes/qute-city-lights/city-lights-theme.py')
@@ -22,7 +23,7 @@ c.statusbar.show = "in-mode"
 c.tabs.background = True
 c.tabs.close_mouse_button = 'middle'
 c.tabs.close_mouse_button_on_bar = 'new-tab'
-c.tabs.show = "switching"
+c.tabs.show = "always"
 c.tabs.favicons.scale = 1.0
 
 c.url.default_page = 'https://www.google.com/'
@@ -90,6 +91,7 @@ config.bind('<Space>bU', 'undo --window')
 config.bind('<Space>bTp', 'tab-pin')
 
 # Files
+config.bind('<Space>fr', 'history --tab')
 config.bind('<Space>fed', 'config-edit')
 config.bind('<Space>feR', 'config-source')
 
