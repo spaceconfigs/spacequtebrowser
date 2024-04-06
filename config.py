@@ -107,7 +107,7 @@ config.bind('<Space>iPp', 'spawn --userscript qute-pass --otp-only --dmenu-invoc
 # Window
 config.bind('<Space>wpm', 'messages')
 config.bind('<Space>wv', 'tab-clone --window')
-config.bind('<Space>wqq', 'close')
+config.bind('<Space>wd', 'close')
 config.bind('<Space>wpP', 'clear-messages')
 
 # Quit
