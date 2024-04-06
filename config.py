@@ -112,6 +112,7 @@ config.bind('<Space>wpP', 'clear-messages')
 
 # Quit
 config.bind('<Space>qq', 'quit')
+config.bind('<Space>qr', 'restart')
 
 config.bind('<Space>xOm', 'hint images')
 config.bind('<Space>xOM', 'hint images tab')
