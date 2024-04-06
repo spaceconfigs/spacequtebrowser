@@ -95,6 +95,9 @@ config.bind('<Space>fr', 'history --tab')
 config.bind('<Space>fed', 'config-edit')
 config.bind('<Space>feR', 'config-source')
 
+# Help
+config.bind('<Space>hh', 'help --tab')
+
 # Insert
 config.bind('<Space>iPP', 'spawn --userscript qute-pass --dmenu-invocation dmenu')
 config.bind('<Space>iPu', 'spawn --userscript qute-pass --username-only --dmenu-invocation dmenu')
