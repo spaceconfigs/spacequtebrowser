@@ -88,7 +88,7 @@ config.bind('<Space>bn', 'tab-next')
 config.bind('<Space>bp', 'tab-prev')
 config.bind('<Space>bNn', 'open --window')
 config.bind('<Space>bU', 'undo --window')
-config.bind('<Space>bTp', 'tab-pin')
+config.bind('<Space>bTp', 'tab-pin;;tab-move')
 
 # Files
 config.bind('<Space>fr', 'history --tab')
