@@ -14,7 +14,7 @@ c.colors.webpage.darkmode.policy.images = 'smart'
 
 c.editor.command = ["alacritty", "-e", "nvim", "{file}"]
 
-c.session.default_name = 'nitaicharan'
+c.session.default_name = 'default'
 
 # c.spellcheck.languages = ['en-US', 'pt-BR']
 
@@ -97,12 +97,14 @@ config.bind('<Space><Tab>', 'tab-focus last')
 config.bind('<Space>?', 'bind')
 
 #  Buffers
-config.bind('<Space>bd', 'tab-close')
+config.bind('<Space>ba', 'session-save')
 config.bind('<Space>bb', 'tab-select')
-config.bind('<Space>bu', 'undo')
+config.bind('<Space>bd', 'tab-close')
 config.bind('<Space>bn', 'tab-next')
-config.bind('<Space>bp', 'tab-prev')
 config.bind('<Space>bNn', 'open --window')
+config.bind('<Space>bp', 'tab-prev')
+config.bind('<Space>br', 'session-delete default')
+config.bind('<Space>bu', 'undo')
 config.bind('<Space>bU', 'undo --window')
 config.bind('<Space>bTp', 'tab-pin;;tab-move')
 
@@ -113,6 +115,9 @@ config.bind('<Space>feR', 'config-source')
 
 # Help
 config.bind('<Space>hh', 'help --tab')
+
+# Project
+config.bind('<Space>pl', 'session-load --clear default')
 
 # Insert
 config.bind('<Space>iPP', 'spawn --userscript qute-pass --dmenu-invocation dmenu')
