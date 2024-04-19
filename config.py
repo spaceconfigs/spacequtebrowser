@@ -39,6 +39,23 @@ c.url.searchengines = {
     'tges': 'https://translate.google.com/?sl=es&tl=pt&text={}',
 }
 
+# Styles
+c.colors.tabs.even.bg = '#323232'
+c.colors.tabs.odd.bg = '#323232'
+
+c.colors.tabs.selected.even.bg = '#009817'
+c.colors.tabs.selected.odd.bg = '#009817'
+
+c.colors.tabs.pinned.even.bg = '#323232'
+c.colors.tabs.pinned.even.fg = '#ffffff'
+c.colors.tabs.pinned.odd.bg = '#323232'
+c.colors.tabs.pinned.odd.fg = '#ffffff'
+
+c.colors.tabs.pinned.selected.even.bg = '#009817'
+c.colors.tabs.pinned.selected.even.fg = '#ffffff'
+c.colors.tabs.pinned.selected.odd.fg = '#ffffff'
+c.colors.tabs.pinned.selected.odd.bg = '#009817'
+
 # Unbinds
 config.unbind('xO')
 config.unbind('f')
