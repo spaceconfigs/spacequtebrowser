@@ -69,14 +69,13 @@ config.bind(':', 'cmd-set-text :')
 config.bind('<f12>', 'devtools')
 
 config.bind('ff', 'hint all')
+config.bind('fF', 'hint all tab')
 config.bind('fi', 'hint images')
+config.bind('fI', 'hint images tab')
 config.bind('fl', 'hint links')
+config.bind('fL', 'hint links tab')
 config.bind('fh', 'hint all hover')
 config.bind('fp', 'hint inputs')
-
-config.bind('fF', 'hint all tab')
-config.bind('fI', 'hint images tab')
-config.bind('fL', 'hint links tab')
 config.bind('fP', 'hint inputs tab')
 
 config.bind('<Ctrl+Shift++>', 'zoom-in')
