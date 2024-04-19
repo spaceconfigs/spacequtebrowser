@@ -33,10 +33,10 @@ c.url.searchengines = {
     'dd': 'https://duckduckgo.com/?q={}',
     'fv': 'https://forvo.com/search/{}/',
     'yt': 'https://www.youtube.com/results?search_query={}',
-    'gten': 'https://translate.google.com/?sl=pt&tl=en&text={}',
-    'tgen': 'https://translate.google.com/?sl=en&tl=pt&text={}',
-    'gtes': 'https://translate.google.com/?sl=pt&tl=es&text={}',
-    'tges': 'https://translate.google.com/?sl=es&tl=pt&text={}',
+    'gtpt:en': 'https://translate.google.com/?sl=pt&tl=en&text={}',
+    'gten:pt': 'https://translate.google.com/?sl=en&tl=pt&text={}',
+    'gtpt:es': 'https://translate.google.com/?sl=pt&tl=es&text={}',
+    'gtes:pt': 'https://translate.google.com/?sl=es&tl=pt&text={}',
 }
 
 # Styles
