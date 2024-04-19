@@ -97,13 +97,11 @@ config.bind('<Space><Tab>', 'tab-focus last')
 config.bind('<Space>?', 'bind')
 
 #  Buffers
-config.bind('<Space>ba', 'session-save')
 config.bind('<Space>bb', 'tab-select')
 config.bind('<Space>bd', 'tab-close')
 config.bind('<Space>bn', 'tab-next')
 config.bind('<Space>bNn', 'open --window')
 config.bind('<Space>bp', 'tab-prev')
-config.bind('<Space>br', 'session-delete default')
 config.bind('<Space>bu', 'undo')
 config.bind('<Space>bU', 'undo --window')
 config.bind('<Space>bTp', 'tab-pin;;tab-move')
@@ -116,24 +114,26 @@ config.bind('<Space>feR', 'config-source')
 # Help
 config.bind('<Space>hh', 'help --tab')
 
-# Project
-config.bind('<Space>pl', 'session-load --clear default')
-
 # Insert
 config.bind('<Space>iPP', 'spawn --userscript qute-pass --dmenu-invocation dmenu')
 config.bind('<Space>iPu', 'spawn --userscript qute-pass --username-only --dmenu-invocation dmenu')
 config.bind('<Space>iPp', 'spawn --userscript qute-pass --password-only --dmenu-invocation dmenu')
 config.bind('<Space>iPp', 'spawn --userscript qute-pass --otp-only --dmenu-invocation dmenu')
 
+# Layout
+config.bind('<Space>ls', 'session-save')
+config.bind('<Space>ld', 'session-delete default')
+config.bind('<Space>lL', 'session-load --clear default')
+
+# Quit
+config.bind('<Space>qq', 'quit')
+config.bind('<Space>qr', 'restart')
+
 # Window
 config.bind('<Space>wpm', 'messages')
 config.bind('<Space>wd', 'close')
 config.bind('<Space>wpP', 'clear-messages')
 config.bind('<Space>wF', 'tab-clone --window')
-
-# Quit
-config.bind('<Space>qq', 'quit')
-config.bind('<Space>qr', 'restart')
 
 config.bind('<Space>xOm', 'hint images')
 config.bind('<Space>xOM', 'hint images tab')
