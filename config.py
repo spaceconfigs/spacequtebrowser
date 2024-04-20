@@ -123,7 +123,8 @@ config.bind('<Space>iPp', 'spawn --userscript qute-pass --otp-only --dmenu-invoc
 # Layout
 config.bind('<Space>ls', 'session-save')
 config.bind('<Space>ld', 'session-delete default')
-config.bind('<Space>lL', 'session-load --clear default')
+config.bind('<Space>ll', 'session-load --clear default')
+config.bind('<Space>lL', 'cmd-set-text --space :session-load --clear')
 
 # Quit
 config.bind('<Space>qq', 'quit')
