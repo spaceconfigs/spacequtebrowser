@@ -62,6 +62,9 @@ config.unbind('f')
 config.unbind('F')
 config.unbind('d')
 config.unbind('<Ctrl+w>')
+config.unbind('<Ctrl+n>')
+config.unbind('<Ctrl+p>')
+config.unbind('<Tab>', mode='command')
 
 # Whout prefix
 config.bind(':', 'cmd-set-text :')
@@ -84,17 +87,28 @@ config.bind('<Ctrl+0>', 'zoom')
 
 # Moviments
 config.bind('<Ctrl+d>', 'scroll-px 0 300')
+config.bind('<Ctrl+i>', 'forward')
 config.bind('<Ctrl+j>', 'completion-item-focus next', mode='command')
 config.bind('<Ctrl+k>', 'completion-item-focus prev', mode='command')
-config.bind('<Ctrl+i>', 'forward')
 config.bind('<Ctrl+o>', 'back')
 config.bind('<Ctrl-u>', 'scroll-px 0 -300')
+config.bind('<Ctrl+x>', 'completion-item-del', mode='command')
 
 config.bind('<Shift+k>', 'tab-prev')
 config.bind('<Shift+j>', 'tab-next')
 
 config.bind('<Space><Tab>', 'tab-focus last')
 config.bind('<Space>?', 'bind')
+
+config.bind('<Space>1', 'tab-select 1')
+config.bind('<Space>2', 'tab-select 2')
+config.bind('<Space>3', 'tab-select 3')
+config.bind('<Space>4', 'tab-select 4')
+config.bind('<Space>5', 'tab-select 5')
+config.bind('<Space>6', 'tab-select 6')
+config.bind('<Space>7', 'tab-select 7')
+config.bind('<Space>8', 'tab-select 8')
+config.bind('<Space>9', 'tab-select 9')
 
 #  Buffers
 config.bind('<Space>bb', 'tab-select')
@@ -108,6 +122,9 @@ config.bind('<Space>bTp', 'tab-pin;;tab-move')
 
 # Files
 config.bind('<Space>fr', 'history --tab')
+config.bind('<Space>fbb', 'bookmark-list')
+config.bind('<Space>fba', 'bookmark-add')
+config.bind('<Space>fbd', 'bookmark-del')
 config.bind('<Space>fed', 'config-edit')
 config.bind('<Space>feR', 'config-source')
 
@@ -121,19 +138,22 @@ config.bind('<Space>iPp', 'spawn --userscript qute-pass --password-only --dmenu-
 config.bind('<Space>iPp', 'spawn --userscript qute-pass --otp-only --dmenu-invocation dmenu')
 
 # Layout
-config.bind('<Space>ls', 'session-save')
-config.bind('<Space>ld', 'session-delete default')
-config.bind('<Space>lL', 'session-load --clear default')
+# config.bind('<Space>ld', 'session-delete default')
+config.bind('<Space>ll', 'session-load --clear default')
+config.bind('<Space>lL', 'cmd-set-text --space :session-load --clear')
+config.bind('<Space>ls', 'session-save default')
+config.bind('<Space>lS', 'cmd-set-text --space :session-save')
 
 # Quit
 config.bind('<Space>qq', 'quit')
 config.bind('<Space>qr', 'restart')
 
 # Window
-config.bind('<Space>wpm', 'messages')
 config.bind('<Space>wd', 'close')
-config.bind('<Space>wpP', 'clear-messages')
 config.bind('<Space>wF', 'tab-clone --window')
+config.bind('<Space>wpm', 'messages')
+config.bind('<Space>wm', 'fullscreen')
+config.bind('<Space>wpP', 'clear-messages')
 
 config.bind('<Space>xOm', 'hint images')
 config.bind('<Space>xOM', 'hint images tab')
