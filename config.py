@@ -4,7 +4,7 @@
 #   qute://help/settings.html
 
 # Uncomment this to still load settings configured via autoconfig.yml
-config.load_autoconfig(False)
+config.load_autoconfig(True)
 
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.policy.images = 'smart'
@@ -64,6 +64,7 @@ config.unbind('d')
 config.unbind('<Ctrl+w>')
 config.unbind('<Ctrl+n>')
 config.unbind('<Ctrl+p>')
+config.unbind('<Ctrl+e>', mode='command')
 config.unbind('<Tab>', mode='command')
 
 # Whout prefix
@@ -88,8 +89,6 @@ config.bind('<Ctrl+0>', 'zoom')
 # Moviments
 config.bind('<Ctrl+d>', 'scroll-px 0 300')
 config.bind('<Ctrl+i>', 'forward')
-config.bind('<Ctrl+j>', 'completion-item-focus next', mode='command')
-config.bind('<Ctrl+k>', 'completion-item-focus prev', mode='command')
 config.bind('<Ctrl+o>', 'back')
 config.bind('<Ctrl-u>', 'scroll-px 0 -300')
 config.bind('<Ctrl+x>', 'completion-item-del', mode='command')
