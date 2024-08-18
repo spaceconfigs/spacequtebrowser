@@ -210,7 +210,6 @@ config.bind("<Space>bNn", "open --tab")
 config.bind("<Space>bp", "tab-prev")
 config.bind("<Space>bu", "undo")
 config.bind("<Space>bU", "undo --window")
-config.bind("<Space>bTp", "tab-pin;;tab-move")
 
 # Files
 config.bind("<Space>fr", "history --tab")
@@ -257,6 +256,7 @@ config.bind("<Space>qR", "restart")
 
 # Window
 config.bind("<Space>wd", "close")
+config.bind("<Space>wt", "tab-pin")
 config.bind("<Space>wpm", "messages")
 config.bind("<Space>wm", "fullscreen")
 config.bind("<Space>wpP", "clear-messages")
