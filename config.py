@@ -1,10 +1,12 @@
+c = c
+config = config
 # Documentation:
 #   qute://help/configuring.html
 #   qute://help/settings.html
 
 # Uncomment this to still load settings configured via autoconfig.yml
+config.confirm_quit = "multiple-tabs"
 config.load_autoconfig(True)
-
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.policy.images = "smart"
 # c.colors.webpage.darkmode.grayscale.images = False
@@ -20,18 +22,16 @@ c.session.default_name = "default"
 c.statusbar.show = "in-mode"
 c.scrolling.smooth = True
 
-c.tabs.background = True
-c.tabs.close_mouse_button = "middle"
-c.tabs.close_mouse_button_on_bar = "new-tab"
-c.tabs.show = "always"
-c.tabs.favicons.scale = 1.0
 
-c.url.default_page = "https://www.google.com/"
+c.url.default_page = "https://app.daily.dev"
+c.url.start_pages = ["https://app.daily.dev"]
 c.url.searchengines = {
     "DEFAULT": "https://www.google.com.br/search?q={}",
     "gg": "https://www.google.com/search?q={}",
     "dd": "https://duckduckgo.com/?q={}",
     "fv": "https://forvo.com/search/{}/",
+    "fven": "https://forvo.com/search/{}/en/",
+    "fves": "https://forvo.com/search/{}/es/",
     "yt": "https://www.youtube.com/results?search_query={}",
     "gtpt:en": "https://translate.google.com/?sl=pt&tl=en&text={}",
     "gten:pt": "https://translate.google.com/?sl=en&tl=pt&text={}",
@@ -69,9 +69,10 @@ c.colors.downloads.stop.bg = "#00aa00"
 c.colors.downloads.stop.fg = "white"
 c.colors.downloads.system.bg = "none"
 c.colors.downloads.system.fg = "none"
+c.hints.border = "1px solid #00A300"
 c.colors.hints.bg = "#101010"
-c.colors.hints.fg = "#00A300"
-c.colors.hints.match.fg = "#00A300"
+c.colors.hints.fg = "#FFFFFF"
+c.colors.hints.match.fg = "#00FF00"
 c.colors.keyhint.bg = "#000000"
 c.colors.keyhint.fg = "#FFFFFF"
 c.colors.keyhint.suffix.fg = "#00FF00"
@@ -101,7 +102,7 @@ c.colors.statusbar.insert.bg = "#151515"
 c.colors.statusbar.insert.fg = "#FFFFFF"
 c.colors.statusbar.normal.bg = "black"
 c.colors.statusbar.normal.fg = "white"
-c.colors.statusbar.passthrough.bg = "darkblue"
+c.colors.statusbar.passthrough.bg = "#151515"
 c.colors.statusbar.passthrough.fg = "white"
 c.colors.statusbar.private.bg = "#666666"
 c.colors.statusbar.private.fg = "white"
@@ -112,34 +113,51 @@ c.colors.statusbar.url.hover.fg = "#00A300"
 c.colors.statusbar.url.success.http.fg = "white"
 c.colors.statusbar.url.success.https.fg = "lime"
 c.colors.statusbar.url.warn.fg = "yellow"
+# Tabs
+c.tabs.close_mouse_button = "middle"
+c.tabs.close_mouse_button_on_bar = "new-tab"
+c.tabs.show = "always"
+c.tabs.favicons.scale = 1.0
+c.tabs.background = True
+## Colors
 c.colors.tabs.bar.bg = "#000000"
+c.colors.tabs.odd.bg = "#000000"
+c.colors.tabs.odd.fg = "#BBBBBB"
+c.colors.tabs.even.bg = "#000000"
+c.colors.tabs.even.fg = "#BBBBBB"
+### Indicator
 c.colors.tabs.indicator.error = "#ff0000"
 c.colors.tabs.indicator.start = "#0000aa"
 c.colors.tabs.indicator.stop = "#00aa00"
 c.colors.tabs.indicator.system = "none"
-c.colors.tabs.odd.bg = "#000000"
-c.colors.tabs.odd.fg = "#BBBBBB"
+### Pinned
 c.colors.tabs.pinned.even.bg = "#000000"
 c.colors.tabs.pinned.even.fg = "#BBBBBB"
 c.colors.tabs.pinned.odd.bg = "#000000"
 c.colors.tabs.pinned.odd.fg = "#BBBBBB"
-c.colors.tabs.pinned.selected.even.bg = "#151515"
+c.colors.tabs.pinned.selected.even.bg = "#00A300"
 c.colors.tabs.pinned.selected.even.fg = "#FFFFFF"
-c.colors.tabs.pinned.selected.odd.bg = "#151515"
+c.colors.tabs.pinned.selected.odd.bg = "#00A300"
 c.colors.tabs.pinned.selected.odd.fg = "#FFFFFF"
-c.colors.tabs.selected.even.bg = "#151515"
+#### Selected
+c.colors.tabs.selected.even.bg = "#00A300"
 c.colors.tabs.selected.even.fg = "#FFFFFF"
-c.colors.tabs.selected.odd.bg = "#151515"
+c.colors.tabs.selected.odd.bg = "#00A300"
 c.colors.tabs.selected.odd.fg = "#FFFFFF"
+## Tooltip
 c.colors.tooltip.bg = None
 c.colors.tooltip.fg = None
 c.colors.webpage.bg = "white"
 
 # Unbinds
+config.unbind("<Shift-h>")
+config.unbind("<Shift-l>")
+config.unbind("<Shift-j>")
+config.unbind("<Shift-k>")
+config.unbind("xO")
 config.unbind("xO")
 config.unbind("f")
 config.unbind("m")
-config.unbind("F")
 config.unbind("d")
 config.unbind("<Ctrl+w>")
 config.unbind("<Ctrl+n>")
@@ -173,9 +191,10 @@ config.bind("<Ctrl+o>", "back")
 config.bind("<Ctrl-u>", "scroll-px 0 -300")
 config.bind("<Ctrl+x>", "completion-item-del", mode="command")
 
-config.bind("<Shift+k>", "tab-prev")
-config.bind("<Shift+j>", "tab-next")
+# config.bind("<Shift+k>", "tab-prev")
+# config.bind("<Shift+j>", "tab-next")
 
+config.bind("<Space><Space>", "cmd-set-text :")
 config.bind("<Space><Tab>", "tab-focus last")
 config.bind("<Space>?", "bind")
 
@@ -183,10 +202,11 @@ for i in range(0, 10):
     config.bind(str(i), f"cmd-set-text :tab-select {i}", mode="normal")
 
 #  Buffers
-config.bind("<Space>bb", "tab-select")
+config.bind("<Space>bb", "cmd-set-text --space :tab-select")
 config.bind("<Space>bd", "tab-close")
 config.bind("<Space>bn", "tab-next")
-config.bind("<Space>bNn", "open --window")
+config.bind("<Space>bNf", "open --window")
+config.bind("<Space>bNn", "open --tab")
 config.bind("<Space>bp", "tab-prev")
 config.bind("<Space>bu", "undo")
 config.bind("<Space>bU", "undo --window")
@@ -199,6 +219,12 @@ config.bind("<Space>fba", "bookmark-add")
 config.bind("<Space>fbd", "bookmark-del")
 config.bind("<Space>fed", "config-edit")
 config.bind("<Space>feR", "config-source")
+
+# Frame
+config.bind("<Space>Fb", "cmd-set-text --space :tab-take")
+config.bind("<Space>FB", "tab-give")
+config.bind("<Space>FD", "window-only")
+config.bind("<Space>Fn", "tab-clone --window")
 
 # Help
 config.bind("<Space>hh", "help --tab")
@@ -217,12 +243,13 @@ config.bind(
     "<Space>iPp", "spawn --userscript qute-pass --otp-only --dmenu-invocation dmenu"
 )
 
+# Project
+
 # Layout
 # config.bind('<Space>ld', 'session-delete default')
-config.bind("<Space>ll", "session-load --clear default")
-config.bind("<Space>lL", "cmd-set-text --space :session-load --clear")
-config.bind("<Space>ls", "session-save default")
-config.bind("<Space>lS", "cmd-set-text --space :session-save")
+config.bind("<Space>ll", "cmd-set-text --space :session-load --clear default")
+config.bind("<Space>lh", "session-load --clear default")
+config.bind("<Space>ls", "cmd-set-text :session-save default")
 
 # Quit
 config.bind("<Space>qq", "quit")
@@ -230,7 +257,6 @@ config.bind("<Space>qR", "restart")
 
 # Window
 config.bind("<Space>wd", "close")
-config.bind("<Space>wF", "tab-clone --window")
 config.bind("<Space>wpm", "messages")
 config.bind("<Space>wm", "fullscreen")
 config.bind("<Space>wpP", "clear-messages")
