@@ -7,20 +7,35 @@ config = config
 # Uncomment this to still load settings configured via autoconfig.yml
 config.confirm_quit = "multiple-tabs"
 config.load_autoconfig(True)
+
+c.content.blocking.method = "both"
+c.qt.highdpi = True
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.policy.images = "smart"
 # c.colors.webpage.darkmode.grayscale.images = False
 
 # config.source('themes/qute-city-lights/city-lights-theme.py')
 
-c.editor.command = ["alacritty", "-e", "nvim", "{file}"]
+c.editor.command = ["wezterm", "start", "--", "nvim", "{file}"]
 
 c.session.default_name = "default"
 
 # c.spellcheck.languages = ['en-US', 'pt-BR']
 
 c.statusbar.show = "in-mode"
+c.tabs.select_on_remove = "last-used"
 c.scrolling.smooth = True
+
+c.content.blocking.adblock.lists = [
+    "https://easylist.to/easylist/easylist.txt",
+    "https://easylist.to/easylist/easyprivacy.txt",
+    "https://easylist.to/easylist/fanboy-social.txt",
+    "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt",
+    "https://secure.fanboy.co.nz/fanboy-annoyance.txt",
+    "https://easylist-downloads.adblockplus.org/easylistdutch.txt",
+    "https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt",
+    "https://www.i-dont-care-about-cookies.eu/abp/",
+]
 
 
 c.url.default_page = "https://app.daily.dev"
@@ -29,15 +44,34 @@ c.url.searchengines = {
     "DEFAULT": "https://www.google.com.br/search?q={}",
     "gg": "https://www.google.com/search?q={}",
     "dd": "https://duckduckgo.com/?q={}",
-    "fv": "https://forvo.com/search/{}/",
-    "fven": "https://forvo.com/search/{}/en/",
-    "fves": "https://forvo.com/search/{}/es/",
     "yt": "https://www.youtube.com/results?search_query={}",
     "gtpt:en": "https://translate.google.com/?sl=pt&tl=en&text={}",
     "gten:pt": "https://translate.google.com/?sl=en&tl=pt&text={}",
     "gtpt:es": "https://translate.google.com/?sl=pt&tl=es&text={}",
     "gtes:pt": "https://translate.google.com/?sl=es&tl=pt&text={}",
 }
+
+c.aliases["fv"] = (
+    'spawn --userscript ~/.local/share/qutebrowser/userscripts/multi_replace_search.sh "https://forvo.com/word/{}/#{}"'
+)
+
+c.aliases["yt"] = (
+    'spawn --userscript ~/.local/share/qutebrowser/userscripts/multi_replace_search.sh "https://www.youtube.com/results?search_query={}"'
+)
+
+c.aliases["trans"] = (
+    'spawn --userscript ~/.local/share/qutebrowser/userscripts/multi_replace_search.sh "https://translate.google.com/?sl={}&tl={}&text={}"'
+)
+
+config.bind(
+    "fv",
+    'open -t $(~/.local/share/qutebrowser/userscripts/multi_replace_search.sh "https://forvo.com/search/{}/{}")',
+)
+
+config.bind(
+    "yg",
+    'open -t $(~/.local/share/qutebrowser/userscripts/multi_replace_search.sh "https://youglish.com/pronounce/{}/{}")',
+)
 
 c.colors.completion.category.border.bottom = "#151515"
 c.colors.completion.category.border.top = "#151515"
@@ -116,7 +150,7 @@ c.colors.statusbar.url.warn.fg = "yellow"
 # Tabs
 c.tabs.close_mouse_button = "middle"
 c.tabs.close_mouse_button_on_bar = "new-tab"
-c.tabs.show = "always"
+c.tabs.show = "never"
 c.tabs.favicons.scale = 1.0
 c.tabs.background = True
 ## Colors
@@ -150,15 +184,22 @@ c.colors.tooltip.fg = None
 c.colors.webpage.bg = "white"
 
 # Unbinds
+config.unbind("-")
+config.unbind("+")
+config.unbind("d")
+config.unbind("f")
+config.unbind("go")
+config.unbind("m")
+config.unbind("r")
+config.unbind("xO")
+config.unbind("xO")
+config.unbind("ZZ")
+
 config.unbind("<Shift-h>")
 config.unbind("<Shift-l>")
 config.unbind("<Shift-j>")
 config.unbind("<Shift-k>")
-config.unbind("xO")
-config.unbind("xO")
-config.unbind("f")
-config.unbind("m")
-config.unbind("d")
+
 config.unbind("<Ctrl+w>")
 config.unbind("<Ctrl+n>")
 config.unbind("<Ctrl+p>")
@@ -167,8 +208,13 @@ config.unbind("<Tab>", mode="command")
 
 # Whout prefix
 config.bind(":", "cmd-set-text :")
+config.bind("<Shift-a>", "cmd-set-text :open {url:pretty}")
+
 
 config.bind("<f12>", "devtools")
+
+config.bind("<Shift-r>", "reload ;; message-info reload")
+config.bind("<Ctrl-Shift-r>", "reload --force ;; message-info 'forced reload'")
 
 config.bind("ff", "hint all")
 config.bind("fF", "hint all tab")
@@ -201,7 +247,16 @@ config.bind("<Space>?", "bind")
 for i in range(0, 10):
     config.bind(str(i), f"cmd-set-text :tab-select {i}", mode="normal")
 
+
+# Character
+config.bind("<Space>$og", "cmd-set-text :open https://chat.openai.com/?q=")
+config.bind("<Space>$oG", "cmd-set-text :open -t https://chat.openai.com/?q=")
+
+#  Applications > media
+config.bind("<Space>amm", "tab-mute")
+
 #  Buffers
+config.bind("<Space>b<Ctrl+d>", "tab-only")
 config.bind("<Space>bb", "cmd-set-text --space :tab-select")
 config.bind("<Space>bd", "tab-close")
 config.bind("<Space>bn", "tab-next")
@@ -213,7 +268,7 @@ config.bind("<Space>bU", "undo --window")
 
 # Files
 config.bind("<Space>fr", "history --tab")
-config.bind("<Space>fbb", "bookmark-list")
+config.bind("<Space>fbb", "bookmark-list --tab")
 config.bind("<Space>fba", "bookmark-add")
 config.bind("<Space>fbd", "bookmark-del")
 config.bind("<Space>fed", "config-edit")
@@ -229,17 +284,21 @@ config.bind("<Space>Fn", "tab-clone --window")
 config.bind("<Space>hh", "help --tab")
 
 # Insert
-config.bind("<Space>iPP", "spawn --userscript qute-pass --dmenu-invocation dmenu")
-config.bind(
-    "<Space>iPu",
-    "spawn --userscript qute-pass --username-only --dmenu-invocation dmenu",
-)
 config.bind(
     "<Space>iPp",
+    "spawn --userscript qute-pass --dmenu-invocation dmenu",
+)
+config.bind(
+    "<Space>iPP",
+    "cmd-set-text :spawn --detach wezterm start -- bash -c 'pass insert {url:host}/nitaicharan@gmail.com'",
+)
+config.bind(
+    "<Space>iPs",
     "spawn --userscript qute-pass --password-only --dmenu-invocation dmenu",
 )
 config.bind(
-    "<Space>iPp", "spawn --userscript qute-pass --otp-only --dmenu-invocation dmenu"
+    "<Space>iPu",
+    "spawn --userscript qute-pass --username-only --dmenu-invocation dmenu",
 )
 
 # Project
@@ -250,16 +309,25 @@ config.bind("<Space>ll", "cmd-set-text --space :session-load --clear default")
 config.bind("<Space>lh", "session-load --clear default")
 config.bind("<Space>ls", "cmd-set-text :session-save default")
 
+# DevTools
+config.bind("<Space>mGS", "devtools window")
+
 # Quit
 config.bind("<Space>qq", "quit")
 config.bind("<Space>qR", "restart")
 
+# Search
+config.bind("<Space>ss", "cmd-set-text /")
+
 # Window
 config.bind("<Space>wd", "close")
 config.bind("<Space>wt", "tab-pin")
-config.bind("<Space>wpm", "messages")
+config.bind("<Space>wpm", "messages --tab")
 config.bind("<Space>wm", "fullscreen")
 config.bind("<Space>wpP", "clear-messages")
+
+# Statusbar
+config.bind("<Space>tmT", "config-cycle statusbar.show always in-mode")
 
 config.bind("<Space>xOm", "hint images")
 config.bind("<Space>xOM", "hint images tab")
