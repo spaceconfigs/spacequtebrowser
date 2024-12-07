@@ -13,6 +13,10 @@ c.qt.highdpi = True
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.policy.images = "smart"
 # c.colors.webpage.darkmode.grayscale.images = False
+c.fonts.web.size.default = 18
+c.fonts.default_size = "16px"
+
+c.spellcheck.languages = ["en-US", "es-ES", "pt-BR"]
 
 # config.source('themes/qute-city-lights/city-lights-theme.py')
 
@@ -20,7 +24,6 @@ c.editor.command = ["wezterm", "start", "--", "nvim", "{file}"]
 
 c.session.default_name = "default"
 
-# c.spellcheck.languages = ['en-US', 'pt-BR']
 
 c.statusbar.show = "in-mode"
 c.tabs.select_on_remove = "last-used"
@@ -52,25 +55,25 @@ c.url.searchengines = {
 }
 
 c.aliases["fv"] = (
-    'spawn --userscript ~/.local/share/qutebrowser/userscripts/multi_replace_search.sh "https://forvo.com/word/{}/#{}"'
+    'spawn --userscript ~/.config/qutebrowser/userscripts/multi_replace_search.sh "https://forvo.com/word/{}/#{}"'
 )
 
 c.aliases["yt"] = (
-    'spawn --userscript ~/.local/share/qutebrowser/userscripts/multi_replace_search.sh "https://www.youtube.com/results?search_query={}"'
+    'spawn --userscript ~/.config/qutebrowser/userscripts/multi_replace_search.sh "https://www.youtube.com/results?search_query={}"'
 )
 
 c.aliases["trans"] = (
-    'spawn --userscript ~/.local/share/qutebrowser/userscripts/multi_replace_search.sh "https://translate.google.com/?sl={}&tl={}&text={}"'
+    'spawn --userscript ~/.config/qutebrowser/userscripts/multi_replace_search.sh "https://translate.google.com/?sl={}&tl={}&text={}"'
 )
 
 config.bind(
     "fv",
-    'open -t $(~/.local/share/qutebrowser/userscripts/multi_replace_search.sh "https://forvo.com/search/{}/{}")',
+    'open -t $(~/.config/qutebrowser/userscripts/multi_replace_search.sh "https://forvo.com/search/{}/{}")',
 )
 
 config.bind(
     "yg",
-    'open -t $(~/.local/share/qutebrowser/userscripts/multi_replace_search.sh "https://youglish.com/pronounce/{}/{}")',
+    'open -t $(~/.config/qutebrowser/userscripts/multi_replace_search.sh "https://youglish.com/pronounce/{}/{}")',
 )
 
 c.colors.completion.category.border.bottom = "#151515"
@@ -200,6 +203,7 @@ config.unbind("<Shift-l>")
 config.unbind("<Shift-j>")
 config.unbind("<Shift-k>")
 
+config.unbind("<Ctrl+v>")
 config.unbind("<Ctrl+w>")
 config.unbind("<Ctrl+n>")
 config.unbind("<Ctrl+p>")
@@ -259,6 +263,7 @@ config.bind("<Space>amm", "tab-mute")
 config.bind("<Space>b<Ctrl+d>", "tab-only")
 config.bind("<Space>bb", "cmd-set-text --space :tab-select")
 config.bind("<Space>bd", "tab-close")
+config.bind("<Space>bh", "home")
 config.bind("<Space>bn", "tab-next")
 config.bind("<Space>bNf", "open --window")
 config.bind("<Space>bNn", "open --tab")
