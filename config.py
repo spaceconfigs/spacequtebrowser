@@ -8,19 +8,26 @@ config = config
 config.confirm_quit = "multiple-tabs"
 config.load_autoconfig(True)
 
+# config.set("fileselect.handler", "external")
+# config.set("fileselect.single_file.command", ['ghostty', '-e', 'yazi', '--chooser-file', '{}'])
+# config.set("fileselect.multiple_files.command", ['ghostty', '-e', 'yazi', '--chooser-file', '{}'])
+
 c.content.blocking.method = "both"
 c.qt.highdpi = True
 c.colors.webpage.darkmode.enabled = True
-c.colors.webpage.darkmode.policy.images = "smart"
+c.colors.webpage.darkmode.policy.images = "never"
 # c.colors.webpage.darkmode.grayscale.images = False
+c.fonts.default_size = "13pt"
+
+c.spellcheck.languages = ["en-US", "es-ES", "pt-BR"]
 
 # config.source('themes/qute-city-lights/city-lights-theme.py')
 
-c.editor.command = ["wezterm", "start", "--", "nvim", "{file}"]
+c.editor.command = ["xdg-open", "{file}"]
+c.statusbar.widgets = ["keypress", "search_match", "progress", "clock"]
 
 c.session.default_name = "default"
 
-# c.spellcheck.languages = ['en-US', 'pt-BR']
 
 c.statusbar.show = "in-mode"
 c.tabs.select_on_remove = "last-used"
@@ -52,25 +59,25 @@ c.url.searchengines = {
 }
 
 c.aliases["fv"] = (
-    'spawn --userscript ~/.local/share/qutebrowser/userscripts/multi_replace_search.sh "https://forvo.com/word/{}/#{}"'
+    'spawn --userscript ~/.config/qutebrowser/userscripts/multi_replace_search.sh "https://forvo.com/word/{}/#{}"'
 )
 
 c.aliases["yt"] = (
-    'spawn --userscript ~/.local/share/qutebrowser/userscripts/multi_replace_search.sh "https://www.youtube.com/results?search_query={}"'
+    'spawn --userscript ~/.config/qutebrowser/userscripts/multi_replace_search.sh "https://www.youtube.com/results?search_query={}"'
 )
 
 c.aliases["trans"] = (
-    'spawn --userscript ~/.local/share/qutebrowser/userscripts/multi_replace_search.sh "https://translate.google.com/?sl={}&tl={}&text={}"'
+    'spawn --userscript ~/.config/qutebrowser/userscripts/multi_replace_search.sh "https://translate.google.com/?sl={}&tl={}&text={}"'
 )
 
 config.bind(
     "fv",
-    'open -t $(~/.local/share/qutebrowser/userscripts/multi_replace_search.sh "https://forvo.com/search/{}/{}")',
+    'open -t $(~/.config/qutebrowser/userscripts/multi_replace_search.sh "https://forvo.com/search/{}/{}")',
 )
 
 config.bind(
     "yg",
-    'open -t $(~/.local/share/qutebrowser/userscripts/multi_replace_search.sh "https://youglish.com/pronounce/{}/{}")',
+    'open -t $(~/.config/qutebrowser/userscripts/multi_replace_search.sh "https://youglish.com/pronounce/{}/{}")',
 )
 
 c.colors.completion.category.border.bottom = "#151515"
@@ -184,6 +191,7 @@ c.colors.tooltip.fg = None
 c.colors.webpage.bg = "white"
 
 # Unbinds
+config.unbind("=")
 config.unbind("-")
 config.unbind("+")
 config.unbind("d")
@@ -200,6 +208,8 @@ config.unbind("<Shift-l>")
 config.unbind("<Shift-j>")
 config.unbind("<Shift-k>")
 
+config.unbind("<Ctrl-a>")
+config.unbind("<Ctrl+v>")
 config.unbind("<Ctrl+w>")
 config.unbind("<Ctrl+n>")
 config.unbind("<Ctrl+p>")
@@ -213,8 +223,8 @@ config.bind("<Shift-a>", "cmd-set-text :open {url:pretty}")
 
 config.bind("<f12>", "devtools")
 
-config.bind("<Shift-r>", "reload ;; message-info reload")
-config.bind("<Ctrl-Shift-r>", "reload --force ;; message-info 'forced reload'")
+config.bind("<Shift-r>", "reload")
+config.bind("<Ctrl-Shift-r>", "reload --force")
 
 config.bind("ff", "hint all")
 config.bind("fF", "hint all tab")
@@ -228,7 +238,7 @@ config.bind("fP", "hint inputs tab")
 
 config.bind("<Ctrl+Shift++>", "zoom-in")
 config.bind("<Ctrl+->", "zoom-out")
-config.bind("<Ctrl+0>", "zoom")
+config.bind("<Ctrl+=>", "zoom")
 
 # Moviments
 config.bind("<Ctrl+d>", "scroll-px 0 300")
@@ -259,6 +269,7 @@ config.bind("<Space>amm", "tab-mute")
 config.bind("<Space>b<Ctrl+d>", "tab-only")
 config.bind("<Space>bb", "cmd-set-text --space :tab-select")
 config.bind("<Space>bd", "tab-close")
+config.bind("<Space>bh", "home")
 config.bind("<Space>bn", "tab-next")
 config.bind("<Space>bNf", "open --window")
 config.bind("<Space>bNn", "open --tab")
@@ -272,6 +283,7 @@ config.bind("<Space>fbb", "bookmark-list --tab")
 config.bind("<Space>fba", "bookmark-add")
 config.bind("<Space>fbd", "bookmark-del")
 config.bind("<Space>fed", "config-edit")
+config.bind("<Space>feU", "adblock-update")
 config.bind("<Space>feR", "config-source")
 
 # Frame
@@ -290,7 +302,7 @@ config.bind(
 )
 config.bind(
     "<Space>iPP",
-    "cmd-set-text :spawn --detach wezterm start -- bash -c 'pass insert {url:host}/nitaicharan@gmail.com'",
+    "cmd-set-text :spawn --detach ghostty -e 'pass insert {url:host}/nitaicharan@gmail.com'",
 )
 config.bind(
     "<Space>iPs",
@@ -305,9 +317,9 @@ config.bind(
 
 # Layout
 # config.bind('<Space>ld', 'session-delete default')
-config.bind("<Space>ll", "cmd-set-text --space :session-load --clear default")
-config.bind("<Space>lh", "session-load --clear default")
-config.bind("<Space>ls", "cmd-set-text :session-save default")
+config.bind("<Space>ll", "cmd-set-text --space :session-load")
+config.bind("<Space>lL", "cmd-set-text --space :session-load --clear")
+config.bind("<Space>ls", "cmd-set-text --space :session-save")
 
 # DevTools
 config.bind("<Space>mGS", "devtools window")
@@ -327,7 +339,7 @@ config.bind("<Space>wm", "fullscreen")
 config.bind("<Space>wpP", "clear-messages")
 
 # Statusbar
-config.bind("<Space>tmT", "config-cycle statusbar.show always in-mode")
+config.bind("<Space>tmT", "config-cycle statusbar.show always never")
 
 config.bind("<Space>xOm", "hint images")
 config.bind("<Space>xOM", "hint images tab")
