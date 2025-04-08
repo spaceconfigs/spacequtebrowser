@@ -336,7 +336,7 @@ config.bind("<Space>wd", "close")
 config.bind("<Space>wt", "tab-pin")
 config.bind("<Space>wpm", "messages --tab")
 config.bind("<Space>wm", "fullscreen")
-config.bind("<Space>wpP", "clear-messages")
+config.bind("<Space>wpP", "clear-messages;; download-clear")
 
 # Statusbar
 config.bind("<Space>tmT", "config-cycle statusbar.show always never")
