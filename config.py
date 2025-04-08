@@ -13,6 +13,7 @@ config.load_autoconfig(True)
 # config.set("fileselect.multiple_files.command", ['ghostty', '-e', 'yazi', '--chooser-file', '{}'])
 
 c.content.blocking.method = "both"
+c.content.javascript.clipboard = 'ask'
 c.qt.highdpi = True
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.policy.images = "never"
@@ -197,7 +198,7 @@ config.unbind("+")
 config.unbind("d")
 config.unbind("f")
 config.unbind("go")
-config.unbind("m")
+# config.unbind("m")
 config.unbind("r")
 config.unbind("xO")
 config.unbind("xO")
@@ -317,8 +318,8 @@ config.bind(
 
 # Layout
 # config.bind('<Space>ld', 'session-delete default')
-config.bind("<Space>ll", "cmd-set-text --space :session-load")
-config.bind("<Space>lL", "cmd-set-text --space :session-load --clear")
+config.bind("<Space>ll", "cmd-set-text :session-load work")
+config.bind("<Space>lL", "cmd-set-text :session-load --clear work")
 config.bind("<Space>ls", "cmd-set-text --space :session-save")
 
 # DevTools
@@ -336,7 +337,7 @@ config.bind("<Space>wd", "close")
 config.bind("<Space>wt", "tab-pin")
 config.bind("<Space>wpm", "messages --tab")
 config.bind("<Space>wm", "fullscreen")
-config.bind("<Space>wpP", "clear-messages")
+config.bind("<Space>wpP", "clear-messages;; download-clear")
 
 # Statusbar
 config.bind("<Space>tmT", "config-cycle statusbar.show always never")
